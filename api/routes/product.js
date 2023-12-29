@@ -2,8 +2,9 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose"); // Add this line
 const Product = require("../model/product");
+const checkAuth = require("../middleware/check-auth");
 const bodyParser = require("body-parser"); // Import body-parser
-router.use(express.json());
+
 
 
 // don't use /products because it is appear in app.use in app.js
@@ -42,7 +43,7 @@ router.get("/", (req, res, next) => {
     });
 });
 
-router.post("/",(req, res, next) => {
+router.post("/",checkAuth,(req, res, next) => {
   console.log(req.file);
   const product = new Product({
     _id: new mongoose.Types.ObjectId(),

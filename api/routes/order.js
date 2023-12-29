@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser"); // Import body-parser
-router.use(express.json());
 
 // import models 
 const Product = require("../model/product");
